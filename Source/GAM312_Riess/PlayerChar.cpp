@@ -10,7 +10,7 @@ APlayerChar::APlayerChar()
 	PrimaryActorTick.bCanEverTick = true;
 
 	//Initial Camera Component Setup.
-	PlayerCamComp = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Can"));
+	PlayerCamComp = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Cam"));
 
 	//Attaching Camera to the Player Mesh at the head.
 	PlayerCamComp->SetupAttachment(GetMesh(), "head");
