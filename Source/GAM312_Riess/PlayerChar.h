@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
+#include "Resource_M.h"
+#include "Kismet/GameplayStatics.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -52,4 +54,59 @@ public:
 	//Creating the variable for the camera names PlayerCamComp.
 	UCameraComponent* PlayerCamComp;
 
+	//Creating a UPROPERTY for the health player stat initialized as a float with default of 100.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+		float Health = 100.0f;
+
+	//Creating a UPROPERTY for the hunger player stat initialized as a float with default of 100.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+		float Hunger = 100.0f;
+
+	//Creating a UPROPERTY for the stamina player stat initialized as a float with default of 100.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
+		float Stamina = 100.0f;
+	
+	//Creating a UPROPERTY for the Wood resource as an int.
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Wood;
+
+	//Creating a UPROPERTY for the Stone resource as an int.
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Stone;
+
+	//Creating a UPROPERTY for the Berry resource as an int.
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		int Berry;
+
+	//Creating a UPROPERTY for an array of the resources that are in the game.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
+		TArray<int> ResourcesArray;
+
+	//Creating a UPROPERTY for the array of the resources names.
+	UPROPERTY(EditAnywhere, Category = "Resources")
+		TArray<FString> ResourcesNameArray;
+
+	//Creating a UPROPERTY for the hit marker.
+	UPROPERTY(EditAnywhere, Category = "HitMarker")
+		UMaterialInterface* hitDecal;
+
+	//Creating the UFUNCTION as a callable blueprint to be able to set the health by an amount.
+	UFUNCTION(BlueprintCallable)
+		void SetHealth(float amount);
+	
+	//Creating a UFUNCTION to be callable and be able to set the hunger by an amount.
+	UFUNCTION(BlueprintCallable)
+		void SetHunger(float amount);
+
+	//Creating a UFUNCTION to be callable and able to set the stamina by an amount.
+	UFUNCTION(BlueprintCallable)
+		void SetStamina(float amount);
+
+	//Creating a UFUNCTION that decreases all of these stats at a certain interval in the game.
+	UFUNCTION()
+		void DecreaseStats();
+
+	//Creating the UFUNCTION for the GiveResource function that gets the amount and type of resource that was hit.
+	UFUNCTION()
+		void GiveResource(float amount, FString resourceType);
 };
