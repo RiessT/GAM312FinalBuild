@@ -7,6 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "Resource_M.h"
 #include "Kismet/GameplayStatics.h"
+#include "BuildingPart.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -90,6 +91,22 @@ public:
 	UPROPERTY(EditAnywhere, Category = "HitMarker")
 		UMaterialInterface* hitDecal;
 
+	//Creating a UPROPERTY array for the Building Array.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Building Supplies")
+		TArray<int> BuildingArray;
+
+	//Creating a UPROPERTY for the bool isBuilding.
+	UPROPERTY()
+		bool isBuilding;
+
+	//Creating a UPROPERTY for the subclass building part.
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+		TSubclassOf<ABuildingPart> BuildPartClass;
+		
+	//Using the subclass building part to create a variable spawnedPart.
+	UPROPERTY()
+	ABuildingPart* spawnedPart;
+
 	//Creating the UFUNCTION as a callable blueprint to be able to set the health by an amount.
 	UFUNCTION(BlueprintCallable)
 		void SetHealth(float amount);
@@ -109,4 +126,16 @@ public:
 	//Creating the UFUNCTION for the GiveResource function that gets the amount and type of resource that was hit.
 	UFUNCTION()
 		void GiveResource(float amount, FString resourceType);
+
+	//Creating a UFUNCTION to detect how much of each resource is needed.
+	UFUNCTION(BlueprintCallable)
+		void UpdateResources(float woodAmount, float stoneAmount, FString buildingObject);
+	
+	//Creating a UFUNCTION to spawn the correct building.
+	UFUNCTION(BlueprintCallable)
+		void SpawnBuilding(int buildingID, bool& isSuccess);
+
+	//Creating a UFUNCTION to rotate the building.
+	UFUNCTION()
+		void RotateBuilding();
 };
