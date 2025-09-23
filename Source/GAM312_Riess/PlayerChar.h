@@ -8,6 +8,7 @@
 #include "Resource_M.h"
 #include "Kismet/GameplayStatics.h"
 #include "BuildingPart.h"
+#include "PlayerWidget.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -106,6 +107,10 @@ public:
 	//Using the subclass building part to create a variable spawnedPart.
 	UPROPERTY()
 	ABuildingPart* spawnedPart;
+
+	//Creating a UPROPERTY using the playerwidget header to create a variable playerUI
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UPlayerWidget* playerUI;
 
 	//Creating the UFUNCTION as a callable blueprint to be able to set the health by an amount.
 	UFUNCTION(BlueprintCallable)

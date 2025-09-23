@@ -47,6 +47,9 @@ void APlayerChar::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	//Calling the UpdateBars function every tick and dispalying it to the playerUI.
+	playerUI->UpdateBars(Health, Hunger, Stamina);
+
 	//Checking if the character is building a building.
 	if (isBuilding)
 	{
