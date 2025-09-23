@@ -24,9 +24,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//Creating the UPROPERTY for the mesh component
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* Mesh;
 
+	//Creating the UPROPERTY for the arrow componenet
 	UPROPERTY(EditAnywhere)
 		UArrowComponent* PivotArrow;
 
