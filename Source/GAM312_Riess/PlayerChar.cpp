@@ -40,6 +40,12 @@ void APlayerChar::BeginPlay()
 	//Setting up the world timer to call the DecreaseStats function every 2 seconds in the game.
 	GetWorld()->GetTimerManager().SetTimer(StatsTimerHandle, this, &APlayerChar::DecreaseStats, 2.0f, true);
 	
+	//Setting the values of the objectives to 0 off the start.
+	if (objWidget)
+	{
+		objWidget->UpdatebuildObj(0.0f);
+		objWidget->UpdatematOBJ(0.0f);
+	}
 }
 
 // Called every frame
@@ -152,6 +158,12 @@ void APlayerChar::FindObject()
 					{
 						GiveResource(resourceValue, hitName);
 
+						//Adding the amount collected to the amount the player had before.
+						matsCollected = matsCollected + resourceValue;
+
+						//Updating the widget with the amount collected.
+						objWidget->UpdatematOBJ(matsCollected);
+
 						//Checking if the ptr is null and outputting to the screen that the resource was collected.
 						check(GEngine != nullptr);
 						GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Collected"));
@@ -179,6 +191,11 @@ void APlayerChar::FindObject()
 	else
 	{
 		isBuilding = false;
+
+		//Updating the number of objects built for the objective.
+		objectsBuilt = objectsBuilt + 1.0f;
+		objWidget->UpdatebuildObj(objectsBuilt);
+
 	}
 
 	

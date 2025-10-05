@@ -9,6 +9,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "BuildingPart.h"
 #include "PlayerWidget.h"
+#include "ObjectiveWidget.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -107,10 +108,23 @@ public:
 	//Using the subclass building part to create a variable spawnedPart.
 	UPROPERTY()
 	ABuildingPart* spawnedPart;
-
+	
 	//Creating a UPROPERTY using the playerwidget header to create a variable playerUI
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UPlayerWidget* playerUI;
+
+	//Creating a UPROPERTY for the widget named objWidget.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UObjectiveWidget* objWidget;
+
+	//Creating a UPROPERTY variable named objectsBuilt.
+	UPROPERTY()
+		float objectsBuilt;
+
+	//Creating a UPROPERTY variable named matsCollected.
+	UPROPERTY()
+		float matsCollected;
+
 
 	//Creating the UFUNCTION as a callable blueprint to be able to set the health by an amount.
 	UFUNCTION(BlueprintCallable)
