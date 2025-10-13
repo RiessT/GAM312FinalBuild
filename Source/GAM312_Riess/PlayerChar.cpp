@@ -234,14 +234,14 @@ void APlayerChar::DecreaseStats()
 {
 	if (Hunger > 0)
 	{
-		SetHunger(-1.0f);
+		SetHunger(-5.0f);
 	}
 
 	SetStamina(10.0f);
 
 	if (Hunger <= 0)
 	{
-		SetHealth(-3.0f);
+		SetHealth(-10.0f);
 	}
 }
 //Calling the GiveResource function and checking which resource should be given based on the object hit.

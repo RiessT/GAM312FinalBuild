@@ -14,6 +14,7 @@ class GAM312_RIESS_API UObjectiveWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
+//Creating ufunctions to allow for the functions to be used in Unreal Engine.
 public: 
 
 	UFUNCTION(BlueprintImplementableEvent)
