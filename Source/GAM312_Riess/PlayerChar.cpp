@@ -166,7 +166,7 @@ void APlayerChar::FindObject()
 
 						//Checking if the ptr is null and outputting to the screen that the resource was collected.
 						check(GEngine != nullptr);
-						GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Resource Collected"));
+						GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Black, TEXT("Resource Collected"), true, FVector2D(1.5, 1.5));
 
 						//Spawning the hit decal at the location hit.
 						UGameplayStatics::SpawnDecalAtLocation(GetWorld(), hitDecal, FVector(10.0f, 10.0f, 10.0f), HitResult.Location, FRotator(-90, 0, 0), 2.0f);
