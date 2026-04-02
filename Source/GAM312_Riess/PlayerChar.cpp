@@ -158,6 +158,8 @@ void APlayerChar::FindObject()
 					{
 						GiveResource(resourceValue, hitName);
 
+						UGameplayStatics::PlaySoundAtLocation(this, soundToPlay, HitResource->GetActorLocation());
+
 						//Adding the amount collected to the amount the player had before.
 						matsCollected = matsCollected + resourceValue;
 
@@ -242,6 +244,8 @@ void APlayerChar::DecreaseStats()
 	if (Hunger <= 0)
 	{
 		SetHealth(-10.0f);
+		UGameplayStatics::PlaySound2D(this, hurtSound);
+
 	}
 }
 //Calling the GiveResource function and checking which resource should be given based on the object hit.

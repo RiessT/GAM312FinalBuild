@@ -57,6 +57,14 @@ public:
 	//Creating the variable for the camera names PlayerCamComp.
 	UCameraComponent* PlayerCamComp;
 
+	//UProperty for the hit sound effect.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Audio")
+		USoundBase* soundToPlay;
+
+		//UProperty for the hit sound effect.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audio")
+		USoundBase* hurtSound;
+
 	//Creating a UPROPERTY for the health player stat initialized as a float with default of 100.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Stats")
 		float Health = 100.0f;
